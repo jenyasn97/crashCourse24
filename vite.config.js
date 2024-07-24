@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { fileURLToPath } from "node:url";
+import path from 'path';
 import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
@@ -9,11 +9,10 @@ export default defineConfig({
     port: 3000,
   },
   resolve: {
-    alias: [
-      {
-        find: "@",
-        replacement: fileURLToPath(new URL("./src", import.meta.url)),
-      },
-    ],
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@components': path.resolve(__dirname, './src/components'),
+    },
   },
 });
