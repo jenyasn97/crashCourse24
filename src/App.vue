@@ -1,7 +1,7 @@
-<script setup></script>
-
 <template>
-  <h1 class="text-3xl font-bold">Hello Vue</h1>
+  <div>Test</div>
 </template>
 
-<style scoped></style>
+<script setup></script>
+
+<style lang="scss" scoped></style>
