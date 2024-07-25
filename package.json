@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch src/jobs.json --port 5000"
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
-    "vue": "^3.4.31"
+    "axios": "^1.7.2",
+    "json-server": "^1.0.0-beta.1",
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.0",
+    "vue-spinner": "^1.0.4"
   },
   "devDependencies": {
     "@types/node": "^20.14.12",

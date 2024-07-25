@@ -6,29 +6,56 @@
           class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
         >
           <!-- Logo -->
-          <a class="mr-4 flex flex-shrink-0 items-center" href="index.html">
+          <router-link
+            class="mr-4 flex flex-shrink-0 cursor-pointer items-center"
+            to="/"
+          >
             <img class="h-10 w-auto" :src="logo" alt="Vue Jobs" />
             <span class="ml-2 hidden text-2xl font-bold text-white md:block"
               >Vue Jobs</span
             >
-          </a>
+          </router-link>
           <div class="md:ml-auto">
             <div class="flex space-x-2">
-              <a
-                href="index.html"
-                class="rounded-md bg-green-900 px-3 py-2 text-white hover:bg-gray-900 hover:text-white"
-                >Home</a
-              >
-              <a
-                href="jobs.html"
-                class="rounded-md px-3 py-2 text-white hover:bg-green-900 hover:text-white"
-                >Jobs</a
-              >
-              <a
-                href="add-job.html"
-                class="rounded-md px-3 py-2 text-white hover:bg-green-900 hover:text-white"
-                >Add Job</a
-              >
+              <router-link
+                to="/"
+                :class="[
+                  isActiveLink('/')
+                    ? 'bg-green-900'
+                    : 'hover:bg-gray-900 hover:text-white',
+                  `rounded-md`,
+                  `px-3`,
+                  `py-2`,
+                  `text-white`,
+                ]"
+                >Home
+              </router-link>
+              <router-link
+                to="/jobs"
+                :class="[
+                  isActiveLink('/jobs')
+                    ? 'bg-green-900'
+                    : 'hover:bg-gray-900 hover:text-white',
+                  `rounded-md`,
+                  `px-3`,
+                  `py-2`,
+                  `text-white`,
+                ]"
+                >Jobs
+              </router-link>
+              <router-link
+                to="/jobs/add"
+                :class="[
+                  isActiveLink('/jobs/add')
+                    ? 'bg-green-900'
+                    : 'hover:bg-gray-900 hover:text-white',
+                  `rounded-md`,
+                  `px-3`,
+                  `py-2`,
+                  `text-white`,
+                ]"
+                >Add Job
+              </router-link>
             </div>
           </div>
         </div>
@@ -39,6 +66,12 @@
 
 <script setup>
 import logo from "@assets/img/logo.png";
+import { RouterLink, useRoute } from "vue-router";
+
+const isActiveLink = (routePath) => {
+  const route = useRoute();
+  return route.path === routePath;
+};
 </script>
 
 <style scoped></style>
