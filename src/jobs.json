@@ -83,6 +83,20 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+    },
+    {
+      "id": "bbfb",
+      "type": "Part-Time",
+      "title": "asdfas",
+      "description": "asdfasd",
+      "salary": "$70K - $80K",
+      "location": "asdfas",
+      "company": {
+        "name": "asdfa",
+        "description": "asdfa",
+        "contactEmail": "asdf@adf",
+        "contactPhone": "asdf"
+      }
     }
   ]
 }
