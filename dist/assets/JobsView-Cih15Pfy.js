@@ -1,0 +1,1 @@
+import{_ as o}from"./JobListings-Can8UgMj.js";import{j as r,o as t}from"./index-BIKw66O9.js";import"./PulseLoader-IMt-Y13w.js";import"./axios-B4uVmeYG.js";const i={__name:"JobsView",setup(e){return(_,a)=>(t(),r(o))}};export{i as default};
