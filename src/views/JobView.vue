@@ -65,11 +65,12 @@
           <div class="mt-6 rounded-lg bg-white p-6 shadow-md">
             <h3 class="mb-6 text-xl font-bold">Manage Job</h3>
             <router-link
-              :to="`./jobs/edit/${job.id}`"
+              :to="`/jobs/edit/${job.id}`"
               class="focus:shadow-outline mt-4 block w-full rounded-full bg-green-500 px-4 py-2 text-center font-bold text-white hover:bg-green-600 focus:outline-none"
               >Edit Job
             </router-link>
             <button
+              @click="deleteJob"
               class="focus:shadow-outline mt-4 block w-full rounded-full bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-600 focus:outline-none"
             >
               Delete Job
@@ -88,11 +89,14 @@
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import axios from "axios";
 import { ref, onMounted } from "vue";
-import { useRoute, RouterLink } from "vue-router";
+import { useRoute, RouterLink, useRouter } from "vue-router";
 import { MapPinIcon } from "@heroicons/vue/24/solid/index.js";
 import BackButton from "@components/BackButton.vue";
+import { useToast } from "vue-toastification";
 
 const route = useRoute();
+const router = useRouter();
+const toast = useToast();
 const jobId = route.params.id;
 const job = ref([]);
 const isLoading = ref(false);
@@ -108,6 +112,20 @@ onMounted(async () => {
     isLoading.value = false;
   }
 });
+
+async function deleteJob() {
+  try {
+    const confirm = window.confirm("Are you sure you want to delete this job?");
+    if (confirm) {
+      await axios.delete(`/api/jobs/${jobId}`);
+      toast.success("Job Deleted Successfully");
+      router.push("/jobs");
+    }
+  } catch (e) {
+    console.error("Error deleting job", e);
+    toast.error("Job not deleted");
+  }
+}
 </script>
 
 <style scoped></style>
